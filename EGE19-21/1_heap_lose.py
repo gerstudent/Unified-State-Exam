@@ -15,7 +15,7 @@ def f(s, c, m):
     return any(lst) if (c + 1) % 2 == m % 2 else all(lst)
 
 # m = 1 --- первый ход Пети
-# m = 2 --- первый ход Вани
+# m = EGE2 --- первый ход Вани
 # m = 3 --- второй ход Пети и тд.
 for s in range(1, 43):
     for m in range(1, 5):
