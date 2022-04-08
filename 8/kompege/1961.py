@@ -7,3 +7,4 @@ for i in product('ЕЛМРУ', repeat=4):
     if lst[0] == 'Л':
         print(count + 1)
         break
+
