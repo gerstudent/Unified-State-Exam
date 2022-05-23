@@ -1,4 +1,5 @@
-# номер 3084 (А. Кабанов)
+# https://www.youtube.com/watch?v=WY64fif5Eyc
+# № 3084 (тайминг на стриме 40.25)
 
 def f(s, c, m):
     if 43 <= s <= 72:
