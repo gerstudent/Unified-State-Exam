@@ -5,34 +5,36 @@
     эти четыре делителя в четыре соседних столбца на экране с новой строки.
     Делители в строке должны следовать в порядке возрастания.
 */
+
+#include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <vector>
-#include <cmath>
 using namespace std;
 
 vector<int> fdividers(int x) {
-    vector<int> dividers;
-    for (int i = 1; i <= sqrt(x); i++) {
-        if (x % i == 0) {
-            dividers.push_back(i);
-            if (i * i != x) {
-                dividers.push_back(x / i);
-            }
-        }
+  vector<int> dividers;
+  for (int i = 1; i <= sqrt(x); i++) {
+    if (x % i == 0) {
+      dividers.push_back(i);
+      if (i * i != x) {
+        dividers.push_back(x / i);
+      }
     }
-    return dividers;
+  }
+  return dividers;
 }
 
 int main() {
-    for (int j = 185311; j <= 185330; ++j){
-        vector<int> divs = fdividers(j);
-        if (divs.size() == 4){
-            sort(divs.begin(), divs.end());
-            for (int div : divs){
-                cout << div << " ";
-            }
-            cout << endl;
-        }
+  for (int i = 185311; i <= 185330; ++i) {
+    vector<int> divs = fdividers(i);
+    if (divs.size() == 4) {
+      sort(divs.begin(), divs.end());
+      for (int div : divs) {
+        cout << div << ' ';
+      }
+      cout << '\n';
     }
-    return 0;
+  }
+  return 0;
 }
