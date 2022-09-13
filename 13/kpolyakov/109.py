@@ -15,14 +15,14 @@ count = 0
 
 def findPath(path, target):
     global count
-    lastTown = path[-1]
-    if lastTown == target and len(path) > 1:
+    last = path[-1]
+    if last == target and len(path) > 1:
         count += 1
         print(path)
         return
-    for town in G[lastTown]:
-        if not town in path or town == target:
-            findPath(path + town, target)
+    for vertex in G[last]:
+        if not vertex in path or vertex == target:
+            findPath(path + vertex, target)
 
 
 findPath('Е', 'Е')
