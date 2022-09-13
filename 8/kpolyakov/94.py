@@ -3,7 +3,7 @@
 # Л, Ь. Каждую букву нужно использовать ровно 1 раз, при этом код не может начинаться с буквы Ь и не может содержать сочетания ЕЬ. Сколько
 # различных кодов может составить Вася?
 
-from itertools import permutations
+from itertools import permutations as pm
 
 count = 0
 for x in permutations("ПАНЕЛЬ", r=6):
