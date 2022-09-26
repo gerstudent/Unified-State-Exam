@@ -13,7 +13,7 @@
   пару $(a, b)$ можно выбрать $m * n$ способами
 
 ```python
-from itertools import *
+from itertools import product
 
 cnt = 0
 # repeat - количество букв в составляемом слове
@@ -50,7 +50,7 @@ print(cnt)
 + Программное
 
 ```python
-from itertools import *
+from itertools import product
 
 cnt = 0
 for x in product('КАНТ', repeat=6):
@@ -80,7 +80,7 @@ print(cnt)
 + Программное:
 
 ```python
-from itertools import *
+from itertools import product
 
 word = 'ЛЕТО'
 cnt = 0
@@ -105,7 +105,7 @@ print(cnt)  # cnt = 175
 + Программное
 
 ```python
-from itertools import *
+from itertools import product
 
 word = 'ГЕПАРД'
 cnt = 0
@@ -217,7 +217,7 @@ print(cnt)
 ### Решение задачи 1
 
 ```python
-from itertools import *
+from itertools import product
 
 cnt = 0
 for x in product('01234567', repeat=4):
@@ -236,7 +236,7 @@ print(cnt)
 ### Решение задачи 2
 
 ```python
-from itertools import *
+from itertools import product
 
 cnt = 0
 for x in product('01234567', repeat=4):
@@ -285,6 +285,7 @@ print(cnt)
 from itertools import product
 
 cnt = 0
+# буквы слова нужно записывать в алфавитном порядке!
 for x in product('АКРУ', repeat=5):
     cnt += 1
     s = ''.join(x)
@@ -318,4 +319,25 @@ for x in product('АОУ', repeat=5):
     if s == 'ОУОУА':
         cnt1 = cnt
 print(cnt2 - cnt1 + 1)
+```
+
+### Пример задачи 3
+
+> Все четырехбуквенный слова, в составе которых могут быть только буквы П, Я, Т, Ь, Д, Н, Е, Й, записаны в алфавитном
+> порядке и пронумерованы начиная с 1. Ниже приведено начало списка. 1. ДДДД 2. ДДДЕ 3. ДДДЙ 4. ДДДН 5. ДДДП 6. ДДДТ 7.
+> ДДДЬ 8. ДДДЯ 9. ДДЕД … Под каким номером в списке идёт последнее слово, которое не содержит ни одной гласной и все
+> буквы
+> в нем различны?
+
+### Решение задачи 3
+
+```python
+from itertools import product
+
+c = 0
+for i, w in enumerate(product(sorted(set('ПЯТЬДНЕЙ')), repeat=4), start=1):
+    if all(c not in w for c in 'ЯЕ') and len(set(w)) == 4:
+        c = i
+
+print(c)
 ```

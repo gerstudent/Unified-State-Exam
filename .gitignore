@@ -1,5 +1,6 @@
 /.idea
 /.vscode
 /venv/
-/for-tests
 /24/24test.py
+ege.py
+cheat_sheet.py
