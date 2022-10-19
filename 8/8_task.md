@@ -31,6 +31,22 @@ words = words[1000:]
 all(c1 != c2 for c1, c2 in zip(w, w[1:]))
 ```
 
+3. Никакие две четные или две нечетные цифры не должны стоять рядом (№1926, kompege)
+
+```python
+s = ''.join(x)
+if s[0] != '0':
+    f = True
+    for j in range(len(s) - 1):
+        prev = int(s[j])
+        nxt = int(s[j + 1])
+        cond1 = prev % 2 == 0 and nxt % 2 == 0
+        cond2 = prev % 2 != 0 and nxt % 2 != 0
+        if (cond1 or cond2) == 1:
+            f = False
+            break
+    if f: cnt += 1
+```
 
 ## Правило произведения
 
