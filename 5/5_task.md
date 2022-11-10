@@ -14,3 +14,31 @@ else:
     b = '1' + b + '00'
 ```
 
+# Разбиение числа на цифры
+
+```python
+for n in range(1000, 1020):
+    b = [int(c) for c in str(n)]
+    print(b[0], b[1])
+```
+
+# Составление чисел из соседних цифр некоторого числа
+
+```python
+for n in range(1000, 1020):
+    b = str(n)
+    a = []
+    for i in range(len(b) - 1):
+        a.append(int(b[i] + b[i + 1]))
+```
+
+# Сумма цифр на четных и нечетных местах (НУМЕРАЦИЯ С ЕДИНИЦЫ СЛЕВА НАПРАВО)
+
+```python
+for n in range(1, 1000):
+    b = [int(c) for c in str(n)]
+    sch = sum(c for c in b if c % 2 == 0)
+    snch = sum(b[i] for i in range(len(b) - 1) if (i + 1) % 2 == 0)
+```
+
+
