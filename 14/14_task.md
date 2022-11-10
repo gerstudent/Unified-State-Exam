@@ -137,3 +137,15 @@ for a in dig:
 
 print(max(ans))
 ```
+
+# Задача 4 (351 Поляков)
+
+```python
+for x in '0123456789abc':
+    a1 = int(f'{x}1418', 13)
+    a2 = int(f'1{x}037', 14)
+    a3 = int(f'2{x}209', 19)
+    f = a1 + a2 == a3
+    if f:
+        print(a3)
+```
