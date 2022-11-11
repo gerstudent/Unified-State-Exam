@@ -16,6 +16,18 @@ def f(n):
 print(f(30))
 ```
 
+> Назовите минимальное значение n, для которого F(n) > 1000. (Необходимо обрабатывать исключение RecursionError)
+
+```python
+for n in range(1, 1000):
+    try:
+        if f(n) > 1000:
+            print(n)
+            break
+    except RecursionError:
+        print("fail")
+```
+
 # Мемоизация рекурсии (Кэширование)
 
 ## Рукописный кэш
