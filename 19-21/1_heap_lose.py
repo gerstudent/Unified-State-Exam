@@ -1,4 +1,4 @@
-# https://www.youtube.com/watch?v=WY64fif5Eyc
+# https://youtu.be/WY64fif5Eyc?t=2435
 # № 3084 (тайминг на стриме 40.25)
 
 def f(s, c, m):

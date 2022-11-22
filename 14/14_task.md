@@ -1,3 +1,21 @@
+# Перевод из десятичной системы в любую другую
+
+```python
+def dec_to_base(x, y):
+    w = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    s = ''
+
+    while x > 0:
+        if x % y > 9:
+            s += w[x % y - 10]
+        else:
+            s += str(x % y)
+        x //= y
+    return s[::-1]
+```
+
+# Формулировки
+
 > Значение выражения x записали в системе счисления с основанием base. Сколько цифр num содержится в этой записи?
 
 ```python
