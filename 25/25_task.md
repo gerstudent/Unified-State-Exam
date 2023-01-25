@@ -1,3 +1,36 @@
+# Алгоритмы
+
+## Поиск делителей
+
+```python
+def divs(n):
+    d = set()
+    for i in range(1, int(n ** 0.5) + 1):
+        if n % i == 0:
+            d |= {i, n // i}
+
+    return sorted(d)
+```
+
+## Проверка на простоту
+
+```python
+def isprime(n):
+    if n % 2 == 0:
+        return n == 2
+    d = 3
+    while d * d <= n and n % d != 0:
+        d += 2
+    return d * d > n
+```
+
+```python
+def isprime(n):
+    return n > 1 and all(n % d for d in range(2, int(n ** 0.5) + 1))
+```
+
+##   
+
 # Примеры
 
 ## №4987 Кабанов
