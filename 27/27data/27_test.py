@@ -1,22 +1,25 @@
-from numba import njit
+with open("71/27-71a.txt" ) as F:
+  N = int(F.readline())
+  data = []
+  for i in range(N):
+    data.append( int(F.readline()) )
 
+D = 69
 
-@njit
-def calc(x, y):
-    c1 = x > 50000 and y > 50000
-    c2 = (x + y) % 80 == 0
-    return c1 and c2
+tail = [(0,-1)] + [(None,0)]*(D-1)
+(maxSum, minLen) = (0, 10**10)
+total = 0
+for i in range(N):
+  total += data[i]
+  r = total % D
+  if tail[r][0] != None:
+    curSum = total - tail[r][0]
+    curLen = i - tail[r][1]
+    if curSum > maxSum or \
+       (curSum == maxSum and curLen < minLen):
+      maxSum = curSum
+      minLen = curLen
+  else:
+    tail[r] = (total, i)
 
-
-for c in ['A', 'B']:
-    with open(f'27{c}_2733.txt') as f:
-        n = int(f.readline())
-        cnt = 0
-        data = [int(x) for x in f.readlines()]
-        for i in range(n):
-            for j in range(i + 1, n):
-                c1 = data[i] > 50000 or data[j] > 50000
-                if (data[i] + data[j]) % 80 == 0 and c1:
-                    cnt += 1
-
-    print(cnt, end=' ')
+print( maxSum, minLen )
