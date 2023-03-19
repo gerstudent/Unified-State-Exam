@@ -1,8 +1,4 @@
-/.idea
-/.vscode
-/venv/
-/24/24test.py
+.idea
+.vscode
 ege.py
-cheat_sheet.py
-for_tests/
-probniki/
+for_test.py

@@ -1,25 +1,11 @@
-with open("71/27-71a.txt" ) as F:
-  N = int(F.readline())
-  data = []
-  for i in range(N):
-    data.append( int(F.readline()) )
+def dtb(x, y):
+    w = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    s = ''
 
-D = 69
-
-tail = [(0,-1)] + [(None,0)]*(D-1)
-(maxSum, minLen) = (0, 10**10)
-total = 0
-for i in range(N):
-  total += data[i]
-  r = total % D
-  if tail[r][0] != None:
-    curSum = total - tail[r][0]
-    curLen = i - tail[r][1]
-    if curSum > maxSum or \
-       (curSum == maxSum and curLen < minLen):
-      maxSum = curSum
-      minLen = curLen
-  else:
-    tail[r] = (total, i)
-
-print( maxSum, minLen )
+    while x > 0:
+        if x % y > 9:
+            s += w[x % y - 10]
+        else:
+            s += str(x % y)
+        x //= y
+    return s[::-1]
