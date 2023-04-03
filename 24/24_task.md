@@ -147,4 +147,34 @@ print(min(s))
 ```
 
 
+# Максимальная длина последовательности из чередующихся символов E и F.
+
+```python
+
+# запустить 4 раза: 
+# 1) for j in range(0, ...) и 'EF' 
+# 2) for j in range(1, ...) и 'EF'
+# 3) for j in range(0, ...) и 'FE'
+# 4) for j in range(1, ...) и 'FE'
+
+with open('24.txt') as f:
+    s = f.readline()
+
+mx = 0
+for i in s.split('D'):
+    cnt = 1
+    for j in range(1, len(i) - 1, 2):
+        if i[j] + i[j + 1] == 'EF':
+            cnt += 2
+        else:
+            mx = max(cnt, mx)
+            cnt = 1
+    mx = max(cnt, mx)
+
+print(mx)
+```
+
+
+
+
 

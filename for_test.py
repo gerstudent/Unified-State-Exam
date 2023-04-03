@@ -1,8 +1,15 @@
-s = '7' * 104
-while '33333' in s or '777' in s:
-    if '33333' in s:
-        s = s.replace('33333', '7')
-    else:
-        s = s.replace('777', '3')
+with open('26_1257.txt') as f:
+    n = int(f.readline())
+    data = [int(i) for i in f.readlines()]
+    st = set(data)
 
-print(s)
+ans = []
+for i in range(n):
+    for j in range(i + 1, n):
+        sm = data[i] + data[j]
+        c1 = sm % 2 != 0
+        c2 = sm in st
+        if c1 and c2:
+            ans.append(sm)
+
+print(len(ans), max(ans))

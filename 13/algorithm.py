@@ -1,32 +1,34 @@
-# Задача: №110 (kpolyakov)
+# 6748 kompege
 
 G = {
     'А': "БГ",
-    'Б': "ДЕ",
-    'В': "АБГ",
-    'Г': "ЕЖ",
-    'Д': "ЕИЛ",
-    'Е': "ВЛ",
+    'Б': "Д",
+    'В': "АБГДЖ",
+    'Г': "Ж",
+    'Д': "ЕИ",
+    'Е': "ВКЛ",
     'Ж': "Е",
-    'И': "Л",
+    'И': "ЕЛ",
     'К': "Ж",
-    'Л': "ЖК"
+    'Л': "К",
 }
+
 count = 0
 
 
-def findPath(path, target):  # path - построенный путь, target - конечный пункт
+def findPath(path, target):
     global count
-    last = path[-1]
+    lastTown = path[-1]
     # Если дошли до конечного пункта, то увеличиваем счётчик и выводим построенный путь на экран:
-    if last == target and len(path) > 1:
+    if lastTown == target and len(path) > 1:
         count += 1
         print(path)
         return
-    for vertex in G[last]:
+
+    for town in G[lastTown]:
         # если новой вершины еще нет в пройденном маршруте или она совпадает с конечной точкой.
-        if not vertex in path or vertex == target:
-            findPath(path + vertex, target)
+        if not town in path or town == target:
+            findPath(path + town, target)
 
 
 findPath('Е', 'Е')
