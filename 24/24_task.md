@@ -8,11 +8,11 @@ print(max(len(c) for c in s.split()))
 # Перебор вариантов
 
 ```python
-c = m = 0
+c = mx = 0
 for i in range(len(s)):
     if s[i] in 'ACDF':
         c += 1
-        m = max(m, c)
+        mx = max(mx, c)
     else:
         c = 0
 ```
@@ -20,13 +20,15 @@ for i in range(len(s)):
 # Запретное сочетание
 
 ```python
-c = m = 1
+c = mx = 1
 for i in range(len(s) - 1):
     if s[i] + s[i + 1] == 'ST':
         c += 1
-        m = max(m, c)
+        mx = max(mx, c)
     else:
         c = 1
+
+print(mx)
 ```
 
 - Если заменяется сочетание, в котором первая и последняя буквы совпадают, то
@@ -43,26 +45,27 @@ while 'AAA' in s:
 > Выведите сначала символ. Если несколько подходящих подцепочек, выведите первую из них.
 
 ```python
-c = m = 1
+c = mx = 1
 ch = ''
 for i in range(len(s) - 1):
     if s[i] == s[i + 1]:
         c += 1
-        if c > m:
-            m = c
+        if c > mx:
+            mx = c
             ch = s[i]
     else:
         c = 1
+print(ch, mx)
 ```
 
 > Определите максимальное количество идущих подряд символов, среди которых каждые два соседних различны.
 
 ```python
-c = m = 1
+c = mx = 1
 for i in range(len(s) - 1):
     if s[i] != s[i + 1]:
         c += 1
-        m = max(m, c)
+        mx = max(mx, c)
     else:
         c = 1
 ```
@@ -72,11 +75,11 @@ for i in range(len(s) - 1):
 > Максимальное количество идущих подряд чисел, расположенных в возрастающем порядке.
 
 ```python
-c = m = 1
+c = mx = 1
 for i in range(len(s) - 1):
     if s[i + 1] > s[i]:
         c += 1
-        m = max(m, c)
+        mx = max(mx, c)
     else:
         c = 1
 ```
@@ -101,13 +104,13 @@ print(max(len(x) for x in s.split()))
 > Максимальное количество идущих пар символов AA или CC.
 
 ```python
-c = m = 0
+c = mx = 0
 for j in 0, 1:
     c = 0
     for i in range(j, len(s) - 1, 2):
         if s[i] + s[i + 1] == 'AA' or s[i] + s[i + 1] == 'CC':
             c += 1
-            m = max(m, c)
+            mx = max(mx, c)
         else:
             c = 0
 ```
@@ -118,10 +121,10 @@ for j in 0, 1:
 
 ```python
 s = s.split('.')
-m = 0
+mx = 0
 for i in range(len(s) - 2):
     c = s[i] + '.' + s[i + 1] + '.' + s[i + 2]
-    m = max(m, len(c))
+    mx = max(mx, len(c))
 ```
 
 > Определите максимальное количество идущих подряд символов, среди которых
@@ -129,12 +132,12 @@ for i in range(len(s) - 2):
 
 ```python
 s = s.split('AB')
-m = 0
+mx = 0
 for i in range(len(s) - 21):
     c = 44
     for j in range(i, i + 22):
         c += len(s[j])
-    m = max(m, c)
+    mx = max(mx, c)
 ```
 
 # Поиск минимального четного числа
@@ -145,7 +148,6 @@ for c in 'QWERTYUIOPASDFGHJKLZXCVBNM':
 s = [int(c) for c in s.split() if int(c) % 2 == 0]
 print(min(s))
 ```
-
 
 # Максимальная длина последовательности из чередующихся символов E и F.
 
