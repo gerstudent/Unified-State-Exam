@@ -24,8 +24,8 @@ words = list("".join(word) for word in product(A, repeat=6))
 
 def valid(s):
     return s[0] == 'К' and s[-1] == 'Ь' and
-    all(s.count(c) == 1 for c in A) and
-    words.index(s[::-1]) - words.index(s) == 26655
+        all(s.count(c) == 1 for c in A) and
+        words.index(s[::-1]) - words.index(s) == 26655
 
 
 for i, word in enumerate(words):
@@ -62,7 +62,8 @@ if s[0] != '0':
     if f: cnt += 1
 ```
 
-3. Определите количество шестизначных чисел, записанных в семеричной системе счисления, в записи которых ровно одна цифра 6, при этом чётные и нечётные цифры чередуются.
+3. Определите количество шестизначных чисел, записанных в семеричной системе счисления, в записи которых ровно одна
+   цифра 6, при этом чётные и нечётные цифры чередуются.
 
 ```python
 from itertools import product
@@ -74,7 +75,7 @@ def valid(n):
         x, y = int(s[i]), int(s[i + 1])
         if (x + y) % 2 == 0:
             return False
-        
+
     return True
 
 
@@ -83,10 +84,9 @@ for i in product('0123456', repeat=6):
     s = ''.join(i)
     if s[0] != '0' and s.count('6') == 1 and valid(s):
         cnt += 1
-        
+
 print(cnt)
 ```
-
 
 ## Правило произведения
 

@@ -27,6 +27,7 @@ up()
 ```python
 from turtle import *
 
+screensize(8000, 8000)
 tracer(0)
 r = 25
 
@@ -39,7 +40,6 @@ for i in range(7):
         fd(4 * r)
 
 up()
-
 for x in range(-20, 20):
     for y in range(-20, 20):
         goto(x * r, y * r)
