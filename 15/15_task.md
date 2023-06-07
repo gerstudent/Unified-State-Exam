@@ -1,9 +1,9 @@
 # Решение вручную (множества и отрезки)
 
 1. Преобразовать выражение до "читаемой" импликации
-2. Записать критерий истинности и найти ответ
+    2. Записать критерий истинности и найти ответ
 
-# Делимость (порязрядная конъюнкция решается аналогично)
+# Делимость
 
 ## Задача 1
 
@@ -106,48 +106,37 @@ print(len(a))
 ## Наибольший
 
 ```python
-def p(x):
-    return 550 <= x <= 800
-
-
-def q(x):
-    return 200 <= x <= 1050
-
-
 def f(x, a1, a2):
-    return q(x) <= ((p(x) == q(x)) or ((not (p(x))) <= (a1 <= x <= a2)))
+    p = 13 <= x <= 19
+    q = 17 <= x <= 23
+    a = a1 <= x <= a2
+    return (not ((not p) <= q)) <= (a <= ((not q) <= p))
 
 
-m = 0
-for a1 in range(500, 1200):
-    for a2 in range(a1 + 1, 1200):
-        if all(f(x, a1, a2) == 1 for x in range(500, 1200)):
-            m = max(m, a2 - a1)
+mx = 0
+for a1 in range(500):
+    for a2 in range(500):
+        if all(f(x, a1, a2) == 1 for x in range(500)):
+            mx = max(mx, a2 - a1)
 
-print(m / 10)
+print(mx)
 ```
 
 ## Наименьший
 
 ```python
-p1 = 10
-p2 = 20
-q1 = 35
-q2 = 45
-
-
 def f(x, a1, a2):
-    P = p1 <= x <= p2
-    Q = q1 <= x <= q2
+    P = 10 <= x <= 20
+    Q = 35 <= x <= 45
     A = a1 <= x <= a2
     return ((not P) <= Q) and (not A)
 
 
 m = []
-for i in range(500):
-    for j in range(500):
-        if all(f(x, i, j) == 1 for x in range(500)):
-            m.append(j - i)
+for a1 in range(500):
+    for a2 in range(500):
+        if all(f(x, a1, a2) == 1 for x in range(500)):
+            m.append(a2 - a1)
 
 print(min(m, default=0))
 ```
