@@ -1,7 +1,7 @@
 # Решение вручную (множества и отрезки)
 
 1. Преобразовать выражение до "читаемой" импликации
-    2. Записать критерий истинности и найти ответ
+2. Записать критерий истинности и найти ответ
 
 # Делимость
 
@@ -113,32 +113,13 @@ def f(x, a1, a2):
     return (not ((not p) <= q)) <= (a <= ((not q) <= p))
 
 
-mx = 0
+mx = []
 for a1 in range(500):
     for a2 in range(500):
         if all(f(x, a1, a2) == 1 for x in range(500)):
-            mx = max(mx, a2 - a1)
+            mx.append(a2 - a1)
 
-print(mx)
-```
-
-## Наименьший
-
-```python
-def f(x, a1, a2):
-    P = 10 <= x <= 20
-    Q = 35 <= x <= 45
-    A = a1 <= x <= a2
-    return ((not P) <= Q) and (not A)
-
-
-m = []
-for a1 in range(500):
-    for a2 in range(500):
-        if all(f(x, a1, a2) == 1 for x in range(500)):
-            m.append(a2 - a1)
-
-print(min(m, default=0))
+print(max(mx, default=0))
 ```
 
 # С промежутком (№412 Поляков)
