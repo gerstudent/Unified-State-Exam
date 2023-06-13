@@ -12,6 +12,23 @@ def divs(n):
     return sorted(d)
 ```
 
+## Факторизация
+
+```python
+def factor(n):
+    ans = []
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            ans.append(i)
+            n //= i
+        else:
+            i += 1
+    if n > 1:
+        ans.append(n)
+    return ans
+```
+
 ## Проверка на простоту
 
 ```python
@@ -25,8 +42,8 @@ def isprime(n):
 ```
 
 ```python
-def isprime(n):
-    return n > 1 and all(n % d for d in range(2, int(n ** 0.5) + 1))
+def isPrime(n):
+    return n > 1 and all(n % i != 0 for i in range(2, int(n ** 0.5) + 1))
 ```
 
 # Примеры

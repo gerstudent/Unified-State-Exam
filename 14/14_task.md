@@ -14,6 +14,24 @@ def dec_to_base(x, y):
     return s[::-1]
 ```
 
+## 2 вариант
+
+```python
+def convert(num, to_base=10, from_base=10):
+    if isinstance(num, str):  # Если число - строка, то ...
+        n = int(num, from_base)  # ... переводим его в нужную систему счисления
+    else:
+        n = int(num)
+
+    # Перевод десятичной в 'to_base' систему
+    alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"  # Берём алфавит
+    if n < to_base:
+        return alphabet[n]  # вернуть значения номера в алфавите (остаток от деления)
+    else:
+        # рекурсивно обратиться к функции нахождения остатка
+        return convert(n // to_base, to_base) + alphabet[n % to_base]
+```
+
 # Формулировки
 
 > Значение выражения x записали в системе счисления с основанием base. Сколько цифр num содержится в этой записи?
