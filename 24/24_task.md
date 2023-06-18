@@ -51,6 +51,8 @@ for i in '0123456789QWERTYUIOPASDFGHJKLZXCVBNM':
 print(mx + 2)
 ```
 
+## 3
+
 # Разбивка символов
 
 ```python
