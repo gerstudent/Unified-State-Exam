@@ -32,6 +32,67 @@ s = s.split()
 print(len(max(s, key=len)))
 ```
 
+```python
+from itertools import product
+
+with open('24_8480.txt') as f:
+    s = f.readline()
+
+error = []
+for i in product('ABC', repeat=2):
+    k = ''.join(i)
+    error.append(k)
+
+mx, ln = 1, 1
+for i in range(len(s) - 1):
+    if s[i] + s[i + 1] not in error:
+        ln += 1
+        mx = max(mx, ln)
+    else:
+        ln = 1
+
+print(mx)
+```
+
+- Три буквы
+
+> (7824) Текстовый файл состоит из символов, обозначающих прописные буквы латинского алфавита.
+> Определите максимальное количество идущих подряд символов, среди которых никакие три буквы из набора букв A, B и С (с
+> учетом повторений) не записаны подряд.
+
+```python
+with open('24_7824.txt') as f:
+    s = f.readline()
+
+s = s.replace('B', 'A').replace('C', 'A')
+while 'AAA' in s:
+    s = s.replace('AAA', 'AA AA')
+
+print(max(len(c) for c in s.split()))
+```
+
+```python
+from itertools import product
+
+with open('24_7824.txt') as f:
+    s = f.readline()
+
+error = []
+for i in product('ABC', repeat=3):
+    k = ''.join(i)
+    error.append(k)
+
+mx, ln = 2, 2
+for i in range(len(s) - 2):
+    if s[i] + s[i + 1] + s[i + 2] not in error:
+        ln += 1
+        mx = max(mx, ln)
+    else:
+        ln = 2
+
+print(mx)
+```
+
 ## 2
 
 > Текстовый файл состоит не более чем из 106 символов и содержит только буквы латинского алфавита и десятичные цифры.
@@ -52,6 +113,37 @@ print(mx + 2)
 ```
 
 ## 3
+
+> (7272 kompege) Определите максимальное количество идущих подряд пар символов AB или CB в прилагаемом файле. Искомая
+> подпоследовательность должна состоять только из пар AB, или только из пар CB, или только из пар AB и CB в произвольном
+> порядке следования этих пар.
+
+```python
+with open('24_7272.txt') as f:
+    s = f.readline()
+
+s = s.replace('AB', '*').replace('CB', '*')
+print(s[:100])
+ans = ''
+while (ans + '*') in s:
+    ans = ans + '*'
+print(len(ans))
+```
+
+```python
+with open('24_7272.txt') as f:
+    s = f.readline()
+
+s = s.replace('AB', '*').replace('CB', '*')
+cnt, mx = 0, 0
+for i in range(len(s)):
+    if s[i] == '*':
+        cnt += 1
+        mx = max(mx, cnt)
+    else:
+        cnt = 0
+print(mx)
+```
 
 # Разбивка символов
 

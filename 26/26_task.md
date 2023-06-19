@@ -7,6 +7,15 @@ with open("26.txt") as f:
     x, y = map(int, f.readline().split())
 ```
 
+```python
+with open('26.txt') as f:
+    m, n = map(int, f.readline().split())
+    a = []
+    for i in range(n):
+        start, end = map(int, f.readline().split())
+        a.append([start, start + end, end])
+```
+
 # Багажи
 
 ### Первый тип
@@ -358,4 +367,83 @@ for i in range(len(a)):
 print(cnt, max_zel)
 ```
 
+# Отель и дома
 
+> Турист всегда заселяется в первый свободный домик ближайшей к морю линии, где есть свободные домики. Определить
+> максимальный номер линии, в которой будет заселяться хотя бы один домик и количество заселенных домиков в следующий
+> час
+> после заселения последнего туриста.
+
+```python
+from math import ceil
+
+with open('26-122.txt') as f:
+    k, n = map(int, f.readline().split())
+    a = []
+    for i in range(n):
+        start, end = map(int, f.readline().split())
+        a.append([start, end])
+
+a.sort()
+houses = [0] * 1000
+last = 0
+for i in range(n):
+    start, end = a[i]
+    for j in range(1000):
+        if houses[j] + 1 <= start:
+            houses[j] = end
+            last = len([x for x in houses if x > start])
+            break
+
+houses = [x for x in houses if x != 0]
+print(ceil(len(houses) / k), last)
+```
+
+# Временная линия
+
+> Автомат фиксирует пассажиров некоторого автобуса по ходу рейса. У каждого пассажира фиксируется время входа и выхода с
+> момента начала рейса. Необходимо узнать максимальное количество пассажиров, одновременно находящихся в автобусе, и
+> общее время, когда в автобусе был хотя бы один пассажир. Временем входа и выхода в автобус пренебречь.
+
+```python
+with open('26-75.txt') as f:
+    n = int(f.readline())
+    a = [0] * 1_000_000
+    for i in range(n):
+        start, end = map(int, f.readline().split())
+        a[start] += 1
+        a[end] -= 1
+
+cnt_pas = 0
+ans = 0
+mx = 0
+for i in range(10 ** 6):
+    cnt_pas += a[i]
+    mx = max(mx, cnt_pas)
+    if cnt_pas > 0:
+        ans += 1
+
+print(mx, ans)
+```
+
+# Конференц зал
+
+```python
+with open('26.txt') as f:
+    n = int(f.readline())
+    a = []
+    for i in range(n):
+        start, end = map(int, f.readline().split())
+        a.append([start, end])
+
+a.sort(key=lambda x: x[1])
+cnt = 0
+limit = 0
+for i in range(n):
+    start, end = a[i]
+    if start >= limit:
+        limit = end
+        cnt += 1
+
+print(cnt)
+```
