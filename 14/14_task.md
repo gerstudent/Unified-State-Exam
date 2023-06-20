@@ -98,12 +98,10 @@ for n in range(1, 1000):
 > арифметического выражения на num и укажите его в ответе в десятичной системе счисления.
 
 ```python
-base = 17
-num = 11
-for x in '0123456789abcdef':
-    a = int(f'9759{x}', base) + int(f'3{x}108', base)
-    if a % num == 0:
-        print(a // num)
+for x in '0123456789abcdefg':
+    a = int(f'9759{x}', 17) + int(f'3{x}108', 17)
+    if a % 11 == 0:
+        print(a // 11)
         break
 ```
 
