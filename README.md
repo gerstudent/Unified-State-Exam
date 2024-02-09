@@ -1,3 +1,3 @@
 # Purpose
 
-Repository contains theory for solving USE problems and my solutions from the kompege website. 
+Repository contains the theory of solving USE problems and my solutions to common problems.
