@@ -1,3 +1,3 @@
 # Purpose
 
-Repository contains the theory of solving USE problems and my solutions to common problems.
+Repository contains theory and my solution for the USE problems.
